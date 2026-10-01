@@ -1,0 +1,85 @@
+plugins {
+    id 'java'
+    id 'org.jooq.jooq-codegen-gradle' version '3.20.10'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-Xlint:deprecation")
+}
+
+group = 'org.gaga.oversoul'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation 'com.google.code.gson:gson:2.13.2'
+    implementation 'com.mysql:mysql-connector-j:8.3.0'
+    implementation 'com.zaxxer:HikariCP:7.0.2'
+
+    implementation 'org.slf4j:slf4j-api:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.5.6'
+
+    implementation 'io.netty:netty-all:4.2.15.Final'
+
+    implementation 'org.jooq:jooq:3.20.10'
+
+    jooqCodegen 'com.mysql:mysql-connector-j:8.3.0'
+}
+
+jooq {
+    configuration {
+        jdbc {
+            driver = 'com.mysql.cj.jdbc.Driver'
+            url = 'jdbc:mysql://localhost:3306/oversoul?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC'
+            user = 'root'
+            password = '123'
+        }
+
+        generator {
+            database {
+                name = 'org.jooq.meta.mysql.MySQLDatabase'
+
+                inputSchema = 'oversoul'
+
+                includes = '.*'
+                excludes = ''
+            }
+
+            target {
+                packageName = 'org.gaga.oversoul.jooq'
+                directory = 'build/generated-sources/jooq'
+            }
+        }
+    }
+}
+
+/*
+ * Diz explicitamente ao Gradle que o código gerado
+ * pelo jOOQ também faz parte do código Java principal.
+ */
+sourceSets {
+    main {
+        java {
+            srcDir 'build/generated-sources/jooq'
+        }
+    }
+}
+
+/*
+ * Antes de compilar o projeto, garante que o jOOQ
+ * tenha gerado as classes.
+ */
+tasks.named('compileJava') {
+    dependsOn tasks.named('jooqCodegen')
+}
+
+test {
+    useJUnitPlatform()
+}

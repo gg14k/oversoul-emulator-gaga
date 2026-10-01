@@ -1,0 +1,20 @@
+{
+  "game": {
+    "name": "oversoul",
+    "host": "localhost",
+    "user": "root",
+    "pass": "123",
+    "port": 3306,
+    "max_pool_size": 10,
+    "connection_timeout": 10000,
+    "leak_detection_threshold": 30000,
+    "minimum_idle": 5,
+    "idle_timeout": 120000,
+    "max_lifetime": 600000,
+    "cache_prep_stmts": true,
+    "prep_stmt_cache_size": 250,
+    "prep_stmt_cache_sql_limit": 2048,
+    "ssl": false,
+	"allow_public_key_retrieval": true
+  }
+}

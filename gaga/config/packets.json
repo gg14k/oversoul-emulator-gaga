@@ -1,0 +1,40 @@
+{
+  "packets": [
+    {
+      "type": "login",
+      "class_name": "org.gaga.oversoul.packet.modules.LoginModule",
+      "cooldown_ms": 5000,
+      "debug": true
+    },
+	{
+      "type": "movement",
+      "class_name": "org.gaga.oversoul.packet.modules.MovementModule",
+      "cooldown_ms": 0,
+      "debug": true
+    },
+	{
+      "type": "chat",
+      "class_name": "org.gaga.oversoul.packet.modules.ChatModule",
+      "cooldown_ms": 0,
+      "debug": true
+    },
+	{
+      "type": "info",
+      "class_name": "org.gaga.oversoul.packet.modules.InfoModule",
+      "cooldown_ms": 0,
+      "debug": true
+    },
+	{
+	  "type": "ping",
+	  "class_name": "org.gaga.oversoul.packet.modules.PingModule",
+	  "cooldown_ms": 0,
+	  "debug": false
+	},
+	{
+	  "type": "equip",
+	  "class_name": "org.gaga.oversoul.packet.modules.EquipModule",
+	  "cooldown_ms": 0,
+	  "debug": true
+	}
+  ]
+}

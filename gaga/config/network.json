@@ -1,0 +1,6 @@
+{
+    "bind_ip": "127.0.0.1",
+    "port": 843,
+    "boss_threads": 1,
+    "worker_threads": 4
+}

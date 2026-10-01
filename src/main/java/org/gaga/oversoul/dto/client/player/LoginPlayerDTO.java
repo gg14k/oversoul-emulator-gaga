@@ -1,0 +1,35 @@
+package org.gaga.oversoul.dto.client.player;
+
+public record LoginPlayerDTO(
+        String name,
+        int intAccessLevel,
+        Boolean bitFounder,
+        int element,
+        long idPlayer,
+        int intGold,
+        int intGem,
+        Integer intGemLifetime,
+        int intAlignment,
+        int intAP,
+        int intBlock,
+        int intChaos,
+        int intCriticalHit,
+        int intDP,
+        int intEarth,
+        int intEnergy,
+        int intFire,
+        int intHits,
+        int intHometown,
+        int intIce,
+        int intInitiative,
+        int intLight,
+        int intLuck,
+        int intNeutral,
+        int intPower,
+        int intStamina,
+        int intShadow,
+        int intWater,
+        String dateDOB,
+        String dateMuteUntil
+) {
+}

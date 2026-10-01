@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!-- Standard terminal output -->
+    <appender
+            name="STDOUT"
+            class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+
+    </appender>
+
+    <!-- Graphical server console -->
+    <appender
+            name="SERVER_CONSOLE"
+            class="org.gaga.oversoul.console.ConsoleAppender"/>
+
+    <!-- Reduce unnecessary third-party logs -->
+    <logger
+            name="io.netty"
+            level="WARN"/>
+
+    <logger
+            name="org.jooq"
+            level="WARN"/>
+
+    <logger
+            name="com.zaxxer.hikari"
+            level="INFO"/>
+
+    <!-- Enable project debug logs -->
+    <logger
+            name="org.gaga.oversoul"
+            level="DEBUG"/>
+
+    <root level="INFO">
+
+        <appender-ref ref="STDOUT"/>
+
+        <appender-ref ref="SERVER_CONSOLE"/>
+
+    </root>
+
+</configuration>
